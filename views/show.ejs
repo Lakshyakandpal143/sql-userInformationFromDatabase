@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show page</title>
+    <style>
+        table,tr,td,th{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>USER INFORMATION</h2>
+    <form method="get" action="/user/newUser">
+        <button>Add new User</button>
+    </form><br>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>User</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% for(user of users){ %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= user.username %></td>
+                <td><form action="/user/<%= user.id %>/edit" method="get"><button>Edit User Details</button></form></td>
+                <td><form method="get" action="/user/<%= user.id %>/del"><button>DELETE</button></form></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
